@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Vote</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/face.css">
+    <link rel="stylesheet" href="css/Loader.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <script>
+        var canvas, context, video, videoObj;
+        async function init() {
+            video = document.getElementById("video");
+            // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||  navigator.mozGetUserMedia;
+            const mediaStream = await navigator.mediaDevices.getUserMedia({video: true});
+            // const video = document.createElement('video');
+            video.srcObject = mediaStream;
+        }
+        $(function () {
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
+            video = document.getElementById("video");
+            init()
+        });
+
+        function takePhoto() {
+            context.drawImage(video, 0, 0, 640, 480);
+        }
+
+        function savePhoto() {
+            var data = canvas.toDataURL();
+            var title = $("#title").val();
+            $("#out").html("Processing...")
+            $.ajax({
+                type: "POST",
+                url: "http://34.67.231.148:5000/saveImage",
+                data: {
+                    title: "hello",
+                    photo: data  
+                }
+            }).done(function (o) {
+                $("#out").html(o)
+                // alert("Photo Saved Successfully!");
+            });
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="loadingDiv" class="loadingDiv">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <script>
+        window.addEventListener("load", function(){
+            const loader = document.getElementById("loadingDiv");
+            loader.className += " hidden";
+        });
+    </script><!--Script for load function-->
+    
+    <div id="blurrable">
+        <header>
+            <nav>
+                <a href="index.html" class="button1">Home</a>
+                <a href="about.html" class="button1">The System</a>
+                <a href="app.html" class="button1">Mock Vote</a>
+            </nav>
+        </header>
+        <div class="main">
+        <!-- <div class="main"> -->
+             <!-- <script src="https://docs.opencv.org/3.4.0/opencv.js"></script> -->
+            <!-- <script src="javascript/particles.js"></script>
+            <script>
+                particlesJS.load('particles-js', 'javascript/particles.json', function() {console.log("Particles json loaded...")})
+            </script> -->
+            <div class="CENTER">
+                <button id="btnSnap" onclick="takePhoto()">Snap Photo</button>
+                <button id="btnSave" onclick="savePhoto()">VOTE</button>
+                <p id="out"></p>
+                <br>
+                <video id="video" width="300" height="300" autoplay></video>
+                <canvas id="canvas" width="640" height="480"></canvas>
+                
+            </div>
+            <!-- <div><button onclick="App()" class="button2">BEGIN</button></div>
+            <div><h1>1) The browser will ask you to access the webcam - click on 'Yes'.
+                <br>2) Have a look at how things go - the prompts will guide you through.
+                <br>3) This is just a mock procedure to aquaint you to the process. <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your vote won't actually be recorded.
+            </h1></div> -->
+        </div>
+        <section>
+            <div id="particles-js"></div>
+        </section>
+
+        <footer>
+            <div>In case of any questions or queries, </div>
+            <div><button onclick="contact()">Chat With Us</button></div>
+        </footer>
+    </div>
+
+
+   
+    <!-- <div id="contact" style="visibility: hidden; background-color: transparent;">
+        <div class="container">
+            <div id="chats">
+                <div><div class="left"><span class="left">Hey</span></div></div>
+                <div><div class="left"><span class="left">I am a bot designed to help you and I'll try to answer all your questions the best I can.</span></div></div>
+                <div><div class="left"><span class="left">If you want the list of some FAQ type 'faq' but without the quotes</span></div></div>
+                <div><div class="left"><span class="left">If you want to get the contact info, type 'contact'</span></div></div>
+            </div>
+            <form id="mail">
+                <input type="text" name="FirstName">
+                <button onclick="buttonPress()" id="chatEnter" type="button">></button>
+                <button onclick="revert()" type="button">Back</button>
+            </form>
+        </div>
+        <script src="javascript/index.js"></script>
+        <script src="javascript/Chatbot.js"></script>
+        <script src="javascript/App.js"></script>
+    </div> -->
+</body>
+</html>

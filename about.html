@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="css/aboutStyle.css">
+    <link rel="stylesheet" href="css/Loader.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    
+    <div id="loadingDiv" class="loadingDiv">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <script>
+        window.addEventListener("load", function(){
+            const loader = document.getElementById("loadingDiv");
+            loader.className += " hidden";
+        });
+    </script><!--Script for load function-->
+
+    <section id="blurrable">
+        <header>
+            <nav>
+                <a href="index.html" class="button1">HOME</a>
+                <a href="about.html" class="button1">THE SYSTEM</a>
+                <a href="app.html" class="button1">MOCK VOTE</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            <div style="text-align: center; margin-top: 15%" id="particles-js">
+                <div id="particles-js"></div>
+                <h1 style="font-size: 60px; letter-spacing: 120px; padding-left: 5%; margin-bottom: 10%;">ABOUT</h1>
+                <div class="cards"><h1>What is Lumin?</h1><p>Lumin is a joint venture between Leo Wolowitz and macro hard for creating a safe environment for the upcoming presidential elections to take place among the current conditions of the pandemic America being one of the most affected by the pandemic the technology used to create the voting system is created by keeping the most disruptive non cooperating people in mind. It ensures high security and transparency and guarantees an infallible ballot system and with clever marketing team ensures a maximum turnout all while keeping your health and life at par with the needs of the country and ensuring proper allocation so that every American has their right to democracy their right to vote and be obese by eating lots of fast food.</p></div>
+                <p class="space red"><br><br><br><br><br></p>
+                <div class="cards"><p>Lumin is a joint venture between Leo Wolowitz and macro hard for creating a safe environment for the upcoming presidential elections to take place among the current conditions of the pandemic America being one of the most affected by the pandemic the technology used to create the voting system is created by keeping the most disruptive non cooperating people in mind. It ensures high security and transparency and guarantees an infallible ballot system and with clever marketing team ensures a maximum turnout all while keeping your health and life at par with the needs of the country and ensuring proper allocation so that every American has their right to democracy their right to vote and be obese by eating lots of fast food.</p></div>
+                <p class="space blue"><br><br><br><br><br></p>
+                <div class="cards"><img src="https://cdn.discordapp.com/attachments/736539233933721691/749010487219322995/beden.png" alt="" style="margin-left: -7%;"><div style="width: 50%;"><h1>Services</h1><p>Biden:<br>1) $250/night - White sueremacy <br>2) $420/night - Conservative storm <br><br><br> Trump:<br>1) $240/night - Orange Rush <br>2) $460/night - Gun Violence Ultra </p></div><img src="https://cdn.discordapp.com/attachments/736539233933721691/749010499827531786/trumpbg.png" alt="" style="margin-right: -7%;"></div>
+            </div>
+        </div>
+
+        <footer>
+            <div>In case of any questions or queries, </div>
+            <div><button onclick="contact()">Chat With Us</button></div>
+        </footer>
+    </section>
+
+    <script src="javascript/particles.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'javascript/particles.json', function() {console.log("Particles json loaded...")})
+    </script>
+
+    <div id="contact" style="visibility: hidden; background-color: transparent; position: fixed;">
+        <div class="container">
+            <div id="chats">
+                <div><div class="left"><span class="left">Hey</span></div></div>
+                <div><div class="left"><span class="left">I am a bot designed to help you and I'll try to answer all your questions the best I can.</span></div></div>
+                <div><div class="left"><span class="left">If you want the list of some FAQ type 'faq' but without the quotes</span></div></div>
+                <div><div class="left"><span class="left">If you want to get the contact info, type 'contact'</span></div></div>
+            </div>
+            <form id="mail">
+                <input type="text" name="FirstName">
+                <button onclick="buttonPress()" id="chatEnter" type="button">></button>
+                <button onclick="revert()" type="button">Back</button>
+            </form>
+        </div>
+        <script src="javascript/index.js"></script>
+        <script src="javascript/Chatbot.js"></script>
+    </div>
+</body>
+</html>
